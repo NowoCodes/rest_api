@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Resources\Project as ProjectResource;
+use App\Http\Resources\ProjectCollection;
 
 class ProjectsController extends Controller
 {
@@ -17,10 +18,11 @@ class ProjectsController extends Controller
     public function index()
     {
         // $projects = Project::all();
-        $projects = Project::where('user_id', auth()->user()->id)
-            ->select(['id', 'name', 'created_at', 'updated_at'])
-            ->get();
-        return $projects;
+        $projects = Project::where('user_id', auth()->id())
+            // ->select(['id', 'name', 'created_at', 'updated_at'])
+            ->Paginate();
+        // return $projects;
+        return new ProjectCollection($projects);
     }
 
     /**
@@ -31,7 +33,7 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**

@@ -21,11 +21,9 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        // $projects = Project::all();
         $projects = Project::where('user_id', auth()->id())
-            // ->select(['id', 'name', 'created_at', 'updated_at'])
+            ->withCount('tasks')
             ->Paginate();
-        // return $projects;
         return new ProjectCollection($projects);
     }
 
@@ -50,6 +48,7 @@ class ProjectsController extends Controller
     public function show(Project $project)
     {
         // return $project;
+        $project->tasks;
         return new ProjectResource($project);
     }
 
@@ -63,6 +62,7 @@ class ProjectsController extends Controller
     public function update(Request $request, Project $project)
     {
         $project->update($request->all());
+        $project->tasks;
         return new ProjectResource($project);
     }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Task as TaskResource;
 
 class Project extends JsonResource
 {
@@ -17,6 +18,9 @@ class Project extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            // 'tasks' => TaskResource::collection($this->tasks),
+            'tasks' => TaskResource::collection($this->whenLoaded('tasks')),
+            'tasks_count' => $this->when(!is_null($this->tasks_count), $this->task_count),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

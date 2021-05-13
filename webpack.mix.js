@@ -10,8 +10,9 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+require("laravel-mix-vue3");
 
-mix.js('resources/js/app.js', 'public/js')
+mix.vue3("resources/js/app.js", "public/js")
     .postCss('resources/css/app.css', 'public/css', [
         //
-    ]);
+]);

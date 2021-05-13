@@ -10,6 +10,10 @@ use App\Http\Resources\ProjectCollection;
 
 class ProjectsController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Project::class, 'project');
+    }
     /**
      * Display a listing of the resource.
      *

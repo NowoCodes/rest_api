@@ -25,8 +25,8 @@ class TaskRequest extends FormRequest
     {
         return [
             'project_id' => 'required|integer',
-            'project_id' => 'required|min:10',
-            'project_id' => 'nullable', 'date', 'after_or_equal:today',
+            'name' => 'required|min:10',
+            'due_date' => 'nullable', 'date', 'after_or_equal:today',
         ];
     }
 }

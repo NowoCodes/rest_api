@@ -3,13 +3,13 @@
     <h1 class="text-6xl ml-6 text-white">Projectify</h1>
     <ul class="flex">
       <li class="mr-6">
-        <a href="#" class="text-blue-600 hover:text-white">Dashboard</a>
+        <router-link :to="{name: 'dashboard'}" class="text-blue-600 hover:text-white">Dashboard</router-link>
       </li>
       <li class="mr-6">
-        <a href="#" class="text-blue-600 hover:text-white">Projects</a>
+        <router-link :to="{name: 'projects'}" class="text-blue-600 hover:text-white">Projects</router-link>
       </li>
       <li class="mr-6">
-        <a href="#" class="text-blue-600 hover:text-white">Login</a>
+        <router-link :to="{name: 'login'}" class="text-blue-600 hover:text-white">Login</router-link>
       </li>
       <li class="mr-6">
         <a href="#" class="text-blue-600 hover:text-white">Logout</a>

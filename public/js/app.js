@@ -16829,8 +16829,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"h-screen flex justify-center items-center mx-auto\"><div><div><h1 class=\"mb-6 text-center font-bold text-gray-600\">Login Form</h1></div><form class=\"w-full max-w-xs bg-white flex flex-col py-5 px-8 rounded-lg shadow-lg\" action=\"\"><label class=\"text-gray-700 font-bold py-2\" for=\"\">Username</label><input class=\"text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3\" type=\"text\" placeholder=\"Username\"><label class=\"text-gray-700 font-bold py-2\" for=\"\">Password</label><input class=\"text-gray-700 shadow border rounded border-gray-300 mb-3 py-1 px-3 focus:outline-none focus:shadow-outline\" type=\"password\" placeholder=\"********\"><div class=\"flex justify-between items-center my-4\"><button class=\"bg-blue-500 hover:bg-blue-700 text-white font-bold rounded py-2 px-4\"> Sign In </button></div></form></div></div>", 1);
+
 function render(_ctx, _cache) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, " This is coming from Signin.vue ");
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  <div class=\"h-screen bg-indigo-200 flex justify-center items-center\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    <form class=\"w-full max-w-xs bg-white flex flex-col py-5 px-8 rounded-lg shadow-lg\" action=\"\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <label class=\"text-gray-700 font-bold py-2\" for=\"\">Username</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <input class=\"text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3\" type=\"text\" placeholder=\"Username\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <label class=\"text-gray-700 font-bold py-2\" for=\"\">Password</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <input class=\"text-gray-700 shadow border rounded border-gray-300 mb-3 py-1 px-3 focus:outline-none focus:shadow-outline\" type=\"password\" placeholder=\"********\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      <div class=\"flex justify-between items-center my-4\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <button class=\"bg-blue-500 hover:bg-blue-700 text-white font-bold rounded py-2 px-4\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          Sign In"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        </button>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        <a class=\"text-blue-600 hover:text-blue-800 font-bold\" href=\"#\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("          Forgot Password?"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("        </a>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("      </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("    </form>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("  </div>")], 2112
+  /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
+  );
 }
 
 /***/ }),
@@ -17056,20 +17061,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
 /* harmony import */ var _components_auth_Signin_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/auth/Signin.vue */ "./resources/js/components/auth/Signin.vue");
 /* harmony import */ var _components_dashboard_Dashboard_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/dashboard/Dashboard.vue */ "./resources/js/components/dashboard/Dashboard.vue");
 /* harmony import */ var _components_projects_Projects_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/projects/Projects.vue */ "./resources/js/components/projects/Projects.vue");
+/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/App */ "./resources/js/components/App.vue");
 
 
 
 
-var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_3__.createRouter)({
-  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_3__.createWebHistory)(),
+
+var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_4__.createRouter)({
+  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_4__.createWebHistory)(),
   routes: [{
+    path: '/',
+    component: _components_auth_Signin_vue__WEBPACK_IMPORTED_MODULE_0__.default,
+    name: 'home'
+  }, {
     path: '/login',
     component: _components_auth_Signin_vue__WEBPACK_IMPORTED_MODULE_0__.default,
-    name: 'login'
+    name: 'login',
+    alias: '/'
   }, {
     path: '/dashboard',
     component: _components_dashboard_Dashboard_vue__WEBPACK_IMPORTED_MODULE_1__.default,

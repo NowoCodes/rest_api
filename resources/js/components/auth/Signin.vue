@@ -4,15 +4,15 @@
       <div>
         <h1 class="mb-6 text-center font-bold text-gray-600">Login Form</h1>
       </div>
-      <form @submit.prevent="handleLogin" class="w-full max-w-xs bg-white flex flex-col py-5 px-8 rounded-lg shadow-lg" action="">
+      <form @submit.prevent="handleLogin" class="w-full max-w-xs bg-white flex flex-col py-5 px-8 rounded-lg shadow-lg">
         <label class="text-gray-700 font-bold py-2">Email</label>
         <input v-model="email"
-            class="text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3"
-            type="text" placeholder="Email">
+               class="text-gray-700 shadow border rounded border-gray-300 focus:outline-none focus:shadow-outline py-1 px-3 mb-3"
+               type="text" placeholder="Email">
         <label class="text-gray-700 font-bold py-2">Password</label>
         <input v-model="password"
-            class="text-gray-700 shadow border rounded border-gray-300 mb-3 py-1 px-3 focus:outline-none focus:shadow-outline"
-            type="password" placeholder="********">
+               class="text-gray-700 shadow border rounded border-gray-300 mb-3 py-1 px-3 focus:outline-none focus:shadow-outline"
+               type="password" placeholder="********">
         <p v-if="errorMsg.length" class="text-red-500 text-xs italic">{{ errorMsg }}</p>
         <div class="flex justify-between items-center my-4">
           <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded py-2 px-4">
@@ -25,13 +25,20 @@
 </template>
 
 <script>
-export  default {
+import {mapGetters} from 'vuex';
+
+export default {
   data() {
     return {
-      'email' : '',
-      'password' : '',
-      'errorMsg' : '',
+      'email': '',
+      'password': '',
+      'errorMsg': '',
     }
+  },
+  computed: {
+    ...mapGetters([
+      'authenticated'
+    ])
   },
   methods: {
     async handleLogin() {
@@ -44,6 +51,11 @@ export  default {
       } catch (e) {
         this.errorMsg = e;
       }
+    }
+  },
+  mounted() {
+    if (this.authenticated) {
+      this.$router.push({name: 'dashboard'});
     }
   }
 }

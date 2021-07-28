@@ -1,22 +1,18 @@
 <template>
-    <div>
-        This is coming from Dashboard.vue <br>
-      {{ user }}
-    </div>
+  <div>
+    This is coming from Dashboard.vue <br>
+    {{ user }}
+  </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+
 export default {
-  data() {
-    return {
-      user: []
-    }
-  },
-  mounted() {
-    axios.get('/api/user').then(res => {
-      this.user = res.data;
-      // console.log(res);
-    });
+  computed: {
+    ...mapGetters([
+        'user'
+    ])
   }
 }
 </script>

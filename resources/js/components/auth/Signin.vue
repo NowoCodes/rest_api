@@ -13,6 +13,7 @@
         <input v-model="password"
             class="text-gray-700 shadow border rounded border-gray-300 mb-3 py-1 px-3 focus:outline-none focus:shadow-outline"
             type="password" placeholder="********">
+        <p v-if="errorMsg.length" class="text-red-500 text-xs italic">{{ errorMsg }}</p>
         <div class="flex justify-between items-center my-4">
           <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded py-2 px-4">
             Sign In
@@ -29,20 +30,20 @@ export  default {
     return {
       'email' : '',
       'password' : '',
+      'errorMsg' : '',
     }
   },
   methods: {
-    handleLogin() {
-      axios.get('/sanctum/csrf-cookie').then(response => {
-        axios.post('/api/authenticate', {email: this.email, password: this.password})
-        .then(res => {
-          console.log(res);
-          this.$router.push({name: 'dashboard'});
-        })
-        .catch(err => {
-          console.log(err);
-        })
-      });
+    async handleLogin() {
+      this.errorMsg = '';
+
+      // Action here
+      try {
+        await this.$store.dispatch('signIn', {email: this.email, password: this.password});
+        await this.$router.push({name: 'dashboard'});
+      } catch (e) {
+        this.errorMsg = e;
+      }
     }
   }
 }

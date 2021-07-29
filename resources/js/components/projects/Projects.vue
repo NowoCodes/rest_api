@@ -1,6 +1,6 @@
 <template>
   <!--  {{ projects }}-->
-  <div class="p-4 m-4 bg-white rounded flex flex-col">
+  <div class="p-4 m-4 bg-blue-100 rounded flex flex-col container">
     <div class="flex justify-between">
       <h1 class="text-2xl text-gray-700">Projects</h1>
       <button class="bg-red-500 rounded text-white px-3 py-2 mr-6 hover:bg-red-700">Add Project</button>
@@ -10,10 +10,10 @@
       <table class="table-auto justify-center">
         <thead>
         <tr>
-          <th class="border px-4 py-2">ID</th>
-          <th class="border px-4 py-2">Name</th>
-          <th class="border px-4 py-2">Tasks</th>
-          <th class="border px-4 py-2">Actions</th>
+          <th class="border border-black px-4 py-2">ID</th>
+          <th class="border border-black px-4 py-2">Name</th>
+          <th class="border border-black px-4 py-2">Tasks</th>
+          <th class="border border-black px-4 py-2">Actions</th>
         </tr>
         </thead>
 

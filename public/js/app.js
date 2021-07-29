@@ -17334,17 +17334,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "border px-4 py-2"
+  "class": "border border-black px-4 py-2"
 };
 var _hoisted_2 = {
-  "class": "border px-4 py-2"
+  "class": "border border-black px-4 py-2"
 };
 var _hoisted_3 = {
-  "class": "border px-4 py-2"
+  "class": "border border-black px-4 py-2"
 };
 
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", {
-  "class": "border px-4 py-2"
+  "class": "border border-black px-4 py-2"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
   "class": "bg-gray-500 rounded text-white px-3 py-2 mr-2 hover:bg-gray-700"
 }, "View"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
@@ -17379,7 +17379,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "p-4 m-4 bg-white rounded flex flex-col"
+  "class": "p-4 m-4 bg-blue-100 rounded flex flex-col container"
 };
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
@@ -17400,13 +17400,13 @@ var _hoisted_4 = {
 };
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "border px-4 py-2"
+  "class": "border border-black px-4 py-2"
 }, "ID"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "border px-4 py-2"
+  "class": "border border-black px-4 py-2"
 }, "Name"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "border px-4 py-2"
+  "class": "border border-black px-4 py-2"
 }, "Tasks"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("th", {
-  "class": "border px-4 py-2"
+  "class": "border border-black px-4 py-2"
 }, "Actions")])], -1
 /* HOISTED */
 );

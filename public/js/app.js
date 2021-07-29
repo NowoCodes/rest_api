@@ -17096,17 +17096,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
+var _hoisted_1 = {
+  "class": "p-4 m-4 bg-white rounded flex"
+};
 
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" This is coming from Dashboard.vue ");
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", {
+  "class": "text-2xl"
+}, "Dashboard", -1
+/* HOISTED */
+);
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+var _hoisted_3 = {
+  "class": "mt-4"
+};
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Hello ");
+
+var _hoisted_5 = {
+  "class": "font-bold"
+};
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(", Welcome to the Dashboard. You have registered with the email ");
+
+var _hoisted_7 = {
+  "class": "font-bold italic"
+};
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(". ");
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "mt-2"
+}, " Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit ", -1
+/* HOISTED */
+);
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "mt-2"
+}, " Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit Some dumb shit ", -1
 /* HOISTED */
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.user), 1
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.user.name), 1
   /* TEXT */
-  )]);
+  ), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.user.email), 1
+  /* TEXT */
+  ), _hoisted_8]), _hoisted_9, _hoisted_10])]);
 }
 
 /***/ }),

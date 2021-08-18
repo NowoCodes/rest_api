@@ -8,7 +8,7 @@
           </label>
         </div>
         <div class="w-2/3">
-          <input v-model="name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700"
+          <input v-model="projectName" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700"
                  type="text">
         </div>
       </div>
@@ -16,7 +16,7 @@
       <div class="flex items-center">
         <div class="w-1/3"></div>
         <div class="w-2/3">
-          <p v-if="errorMsg.length" class="mb-4 text-red-500 text-xs italic">{{ errorMsg }}</p>
+          <p v-if="errorMsg.length" class="mb-4 dark text-red-500 text-xs italic">{{ errorMsg }}</p>
         </div>
       </div>
 
@@ -25,7 +25,7 @@
         <div class="w-2/3">
           <button class="shadow bg-purple-500 hover:bg-purple-400 rounded px-3 py-2 mr-2 focus:shadow-outline focus:outline-none text-white font-bold"
                   type="submit">
-            Add
+            Edit
           </button>
 
           <button class="shadow bg-gray-500 hover:bg-gray-400 rounded px-3 py-2 focus:shadow-outline focus:outline-none text-white font-bold" type="button"
@@ -40,20 +40,21 @@
 
 <script>
 export default {
+  props: ['project'],
   data() {
     return {
-      name: '',
+      projectName: this.project.name,
       errorMsg: '',
     }
   },
   methods: {
     async handleSubmit() {
       try {
-        const response = await axios.post('api/projects', {name: this.name});
+        const response = await axios.put('api/projects/' + this.project.id, {name: this.projectName});
         if (response.data.status === 'OK') {
           this.name = '';
           this.errorMsg = '';
-          this.$emit('project-added');
+          this.$emit('project-edited');
         }
       } catch (e) {
         if (e.response.data.error.name[0].length > 0) {

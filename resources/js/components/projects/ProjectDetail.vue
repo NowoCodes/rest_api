@@ -2,7 +2,7 @@
   <div class="p-4 m-4 bg-blue-100 rounded flex flex-col container">
     <div class="flex justify-between">
       <h1 class="text-2xl text-gray-700">ProjectDetail #{{ id }}</h1>
-      <button class="bg-red-500 rounded text-white px-3 py-2 mr-6 hover:bg-red-700">Delete Project</button>
+      <button @click="deleteProject(id)" class="bg-red-500 rounded text-white px-3 py-2 mr-6 hover:bg-red-700">Delete Project</button>
     </div>
 
     <div v-if="project.id > 0" class="mt-6">
@@ -55,6 +55,13 @@ export default {
   data() {
     return {
       project: [],
+    }
+  },
+  methods: {
+    deleteProject(id) {
+      axios.delete('api/projects/' +id).then((res) => {
+        this.$router.push({name: 'projects'});
+      });
     }
   },
   mounted() {

@@ -4,7 +4,7 @@
     <div class="flex items-center justify-center">{{ task.due_date }}</div>
     <div class="flex items-center justify-center">
       <button class="bg-green-500 rounded text-white px-3 py-2 mr-2 hover:bg-green-700">Edit</button>
-      <button class="bg-red-500 rounded text-white px-3 py-2 mr-2 hover:bg-red-700">Delete</button>
+      <button @click="this.$emit('delete-task', task.id)" class="bg-red-500 rounded text-white px-3 py-2 mr-2 hover:bg-red-700">Delete</button>
     </div>
   </div>
 </template>

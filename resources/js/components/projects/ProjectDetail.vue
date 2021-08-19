@@ -50,7 +50,7 @@
 
       <div v-if="project.tasks.length > 0" class="my-4">
         <h2 class="text-2xl text-gray-600 mb-4">Tasks</h2>
-        <task-item v-for="task in project.tasks" :key="task.id" :task="task"></task-item>
+        <task-item v-for="task in project.tasks" :key="task.id" :task="task" @delete-task="deleteTask"></task-item>
       </div>
     </div>
   </div>
@@ -82,6 +82,13 @@ export default {
       this.showForm = false;
       axios.get('api/projects/' + this.id).then((res) => {
         this.project = res.data.data;
+      });
+    },
+    deleteTask(id) {
+      axios.delete('api/tasks/' + id).then((res) => {
+        //   this.project.tasks
+        const index = this.project.tasks.map(i => i.id).indexOf(id);
+        this.project.tasks.splice(index, 1);
       });
     }
   },

@@ -17012,6 +17012,18 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('api/projects/' + this.id).then(function (res) {
         _this2.project = res.data.data;
       });
+    },
+    deleteTask: function deleteTask(id) {
+      var _this3 = this;
+
+      axios["delete"]('api/tasks/' + id).then(function (res) {
+        //   this.project.tasks
+        var index = _this3.project.tasks.map(function (i) {
+          return i.id;
+        }).indexOf(id);
+
+        _this3.project.tasks.splice(index, 1);
+      });
     }
   },
   mounted: function mounted() {
@@ -17705,10 +17717,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   )])]), $data.project.tasks.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_18, [_hoisted_19, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.project.tasks, function (task) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_task_item, {
       key: task.id,
-      task: task
+      task: task,
+      onDeleteTask: $options.deleteTask
     }, null, 8
     /* PROPS */
-    , ["task"]);
+    , ["task", "onDeleteTask"]);
   }), 128
   /* KEYED_FRAGMENT */
   ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
@@ -18078,18 +18091,19 @@ var _hoisted_1 = {
 var _hoisted_2 = {
   "class": "flex items-center justify-center"
 };
-
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_3 = {
   "class": "flex items-center justify-center"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+};
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
   "class": "bg-green-500 rounded text-white px-3 py-2 mr-2 hover:bg-green-700"
-}, "Edit"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-  "class": "bg-red-500 rounded text-white px-3 py-2 mr-2 hover:bg-red-700"
-}, "Delete")], -1
+}, "Edit", -1
 /* HOISTED */
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _this = this;
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
     "class": [{
       'bg-gray-600': $props.task.priority == 'High'
@@ -18098,7 +18112,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.task.due_date), 1
   /* TEXT */
-  ), _hoisted_3], 2
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return _this.$emit('delete-task', $props.task.id);
+    }),
+    "class": "bg-red-500 rounded text-white px-3 py-2 mr-2 hover:bg-red-700"
+  }, "Delete")])], 2
   /* CLASS */
   );
 }

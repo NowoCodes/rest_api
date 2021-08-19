@@ -17006,7 +17006,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         name: '',
         project_id: this.id
       },
-      taskErrMsg: ''
+      taskErrMsg: '',
+      taskId: 0
     };
   },
   methods: {
@@ -17044,6 +17045,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.task.name = '';
       this.taskErrMsg = '';
     },
+    editTask: function editTask(id) {
+      var task = this.project.tasks.filter(function (i) {
+        return i.id === id;
+      });
+      this.showTaskForm = true;
+      this.task.name = task[0].name;
+      this.taskErrMsg = '';
+      this.taskId = id;
+    },
     cancelForm: function cancelForm() {
       this.showTaskForm = false;
       this.taskErrMsg = '';
@@ -17052,44 +17062,85 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var response;
+        var response, index, _response;
+
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return axios.post('api/tasks', _this4.task);
+                if (!(_this4.taskId > 0)) {
+                  _context.next = 13;
+                  break;
+                }
 
-              case 3:
+                _context.prev = 1;
+                _context.next = 4;
+                return axios.put('api/tasks/' + _this4.taskId, _this4.task);
+
+              case 4:
                 response = _context.sent;
 
                 // console.log(response);
                 if (response.data.status === 'OK') {
-                  // this.fetchProject();
-                  _this4.project.tasks.push(response.data.data);
+                  index = _this4.project.tasks.map(function (i) {
+                    return i.id;
+                  }).indexOf(_this4.taskId);
+
+                  _this4.project.tasks.splice(index, 1, response.data.data);
 
                   _this4.showTaskForm = false;
                   _this4.taskErrMsg = '';
                 }
 
-                _context.next = 10;
+                _context.next = 11;
                 break;
 
-              case 7:
-                _context.prev = 7;
-                _context.t0 = _context["catch"](0);
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context["catch"](1);
 
                 if (_context.t0.response.data.errors.name[0].length > 0) {
                   _this4.taskErrMsg = _context.t0.response.data.errors.name[0];
                 }
 
-              case 10:
+              case 11:
+                _context.next = 23;
+                break;
+
+              case 13:
+                _context.prev = 13;
+                _context.next = 16;
+                return axios.post('api/tasks', _this4.task);
+
+              case 16:
+                _response = _context.sent;
+
+                // console.log(response);
+                if (_response.data.status === 'OK') {
+                  // this.fetchProject();
+                  _this4.project.tasks.push(_response.data.data);
+
+                  _this4.showTaskForm = false;
+                  _this4.taskErrMsg = '';
+                }
+
+                _context.next = 23;
+                break;
+
+              case 20:
+                _context.prev = 20;
+                _context.t1 = _context["catch"](13);
+
+                if (_context.t1.response.data.errors.name[0].length > 0) {
+                  _this4.taskErrMsg = _context.t1.response.data.errors.name[0];
+                }
+
+              case 23:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee, null, [[1, 8], [13, 20]]);
       }))();
     }
   },
@@ -17875,10 +17926,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_task_item, {
       key: task.id,
       task: task,
-      onDeleteTask: $options.deleteTask
+      onDeleteTask: $options.deleteTask,
+      onEditTask: $options.editTask
     }, null, 8
     /* PROPS */
-    , ["task", "onDeleteTask"]);
+    , ["task", "onDeleteTask", "onEditTask"]);
   }), 128
   /* KEYED_FRAGMENT */
   ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
@@ -18251,13 +18303,6 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   "class": "flex items-center justify-center"
 };
-
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
-  "class": "bg-green-500 rounded text-white px-3 py-2 mr-2 hover:bg-green-700"
-}, "Edit", -1
-/* HOISTED */
-);
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _this = this;
 
@@ -18269,8 +18314,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.task.due_date), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
     onClick: _cache[1] || (_cache[1] = function ($event) {
+      return _this.$emit('edit-task', $props.task.id);
+    }),
+    "class": "bg-green-500 rounded text-white px-3 py-2 mr-2 hover:bg-green-700"
+  }, "Edit"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+    onClick: _cache[2] || (_cache[2] = function ($event) {
       return _this.$emit('delete-task', $props.task.id);
     }),
     "class": "bg-red-500 rounded text-white px-3 py-2 mr-2 hover:bg-red-700"

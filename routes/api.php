@@ -31,10 +31,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware('auth:sanctum')->get('/logout', function (Request $request) {
+Route::middleware('auth:sanctum')->post('/logout', function (Request $request) {
     $user = $request->user();
     $user->tokens()->delete();
     Auth::guard('web')->logout();
-    
+
     return ['status' => 'OK'];
 });

@@ -16979,20 +16979,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _TaskItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TaskItem */ "./resources/js/components/projects/TaskItem.vue");
-/* harmony import */ var _ProjectEditForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProjectEditForm */ "./resources/js/components/projects/ProjectEditForm.vue");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _TaskItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TaskItem */ "./resources/js/components/projects/TaskItem.vue");
+/* harmony import */ var _ProjectEditForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProjectEditForm */ "./resources/js/components/projects/ProjectEditForm.vue");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['id'],
   components: {
-    TaskItem: _TaskItem__WEBPACK_IMPORTED_MODULE_0__.default,
-    ProjectEditForm: _ProjectEditForm__WEBPACK_IMPORTED_MODULE_1__.default
+    TaskItem: _TaskItem__WEBPACK_IMPORTED_MODULE_1__.default,
+    ProjectEditForm: _ProjectEditForm__WEBPACK_IMPORTED_MODULE_2__.default
   },
   data: function data() {
     return {
       project: [],
-      showForm: false
+      showForm: false,
+      showTaskForm: false,
+      task: {
+        name: '',
+        project_id: this.id
+      },
+      taskErrMsg: ''
     };
   },
   methods: {
@@ -17024,6 +17038,59 @@ __webpack_require__.r(__webpack_exports__);
 
         _this3.project.tasks.splice(index, 1);
       });
+    },
+    addTask: function addTask() {
+      this.showTaskForm = true;
+      this.task.name = '';
+      this.taskErrMsg = '';
+    },
+    cancelForm: function cancelForm() {
+      this.showTaskForm = false;
+      this.taskErrMsg = '';
+    },
+    handleTaskSubmit: function handleTaskSubmit() {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return axios.post('api/tasks', _this4.task);
+
+              case 3:
+                response = _context.sent;
+
+                // console.log(response);
+                if (response.data.status === 'OK') {
+                  // this.fetchProject();
+                  _this4.project.tasks.push(response.data.data);
+
+                  _this4.showTaskForm = false;
+                  _this4.taskErrMsg = '';
+                }
+
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+
+                if (_context.t0.response.data.errors.name[0].length > 0) {
+                  _this4.taskErrMsg = _context.t0.response.data.errors.name[0];
+                }
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
     }
   },
   mounted: function mounted() {
@@ -17673,10 +17740,70 @@ var _hoisted_18 = {
   key: 0,
   "class": "my-4"
 };
+var _hoisted_19 = {
+  "class": "flex justify-between mb-6"
+};
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", {
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", {
   "class": "text-2xl text-gray-600 mb-4"
 }, "Tasks", -1
+/* HOISTED */
+);
+
+var _hoisted_21 = {
+  "class": "flex justify-center"
+};
+var _hoisted_22 = {
+  "class": "flex items-center mb-6"
+};
+
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "w-1/3"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4",
+  "for": "inline-full-name"
+}, " Name ")], -1
+/* HOISTED */
+);
+
+var _hoisted_24 = {
+  "class": "w-2/3"
+};
+var _hoisted_25 = {
+  "class": "flex items-center"
+};
+
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "w-1/3"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_27 = {
+  "class": "w-2/3"
+};
+var _hoisted_28 = {
+  key: 0,
+  "class": "mb-4 text-red-500 text-xs italic"
+};
+var _hoisted_29 = {
+  "class": "flex items-center"
+};
+
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "w-1/3"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_31 = {
+  "class": "w-2/3"
+};
+
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+  "class": "shadow bg-purple-500 hover:bg-purple-400 rounded px-3 py-2 mr-2 focus:shadow-outline focus:outline-none text-white font-bold",
+  type: "submit"
+}, " Add ", -1
 /* HOISTED */
 );
 
@@ -17714,7 +17841,37 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.project.updated_at), 1
   /* TEXT */
-  )])]), $data.project.tasks.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_18, [_hoisted_19, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.project.tasks, function (task) {
+  )])]), $data.project.tasks.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+    "class": "bg-blue-500 rounded text-white px-3 py-2 mr-6 hover:bg-blue-700",
+    onClick: _cache[4] || (_cache[4] = function () {
+      return $options.addTask && $options.addTask.apply($options, arguments);
+    })
+  }, "Add Task ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
+    "class": "shadow-md rounded px-8 pt-6 pb-8 mb-4",
+    onSubmit: _cache[7] || (_cache[7] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.handleTaskSubmit && $options.handleTaskSubmit.apply($options, arguments);
+    }, ["prevent"]))
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $data.task.name = $event;
+    }),
+    "class": "bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700",
+    type: "text"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.task.name]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_25, [_hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_27, [$data.taskErrMsg.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("p", _hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.taskErrMsg), 1
+  /* TEXT */
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_29, [_hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_31, [_hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+    "class": "shadow bg-gray-500 hover:bg-gray-400 rounded px-3 py-2 focus:shadow-outline focus:outline-none text-white font-bold",
+    type: "button",
+    onClick: _cache[6] || (_cache[6] = function () {
+      return $options.cancelForm && $options.cancelForm.apply($options, arguments);
+    })
+  }, " Cancel ")])])], 32
+  /* HYDRATE_EVENTS */
+  )])], 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.showTaskForm]]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.project.tasks, function (task) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_task_item, {
       key: task.id,
       task: task,

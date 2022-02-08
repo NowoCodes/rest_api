@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\TaskRequest;
-use App\Http\Resources\Task as TaskResource;
 use App\Models\Task;
-use Illuminate\Http\Request;
+use App\Http\Requests\TaskRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\Task as TaskResource;
+use Illuminate\Auth\Access\AuthorizationException as AuthorizationExceptionAlias;
 
 class TaskController extends Controller
 {
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param TaskRequest $request
+     * @return TaskResource
+     * @throws AuthorizationExceptionAlias
      */
-    public function store(TaskRequest $request)
+    public function store(TaskRequest $request): TaskResource
     {
         $this->authorize('create', [Task::class, $request->project_id]);
         $task = Task::create($request->all());
@@ -26,11 +27,12 @@ class TaskController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param TaskRequest $request
+     * @param Task $task
+     * @return TaskResource
+     * @throws AuthorizationExceptionAlias
      */
-    public function update(TaskRequest $request, Task $task)
+    public function update(TaskRequest $request, Task $task): TaskResource
     {
         $this->authorize('update', $task);
         $task->update($request->all());
@@ -40,10 +42,11 @@ class TaskController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Task $task
+     * @return array
+     * @throws AuthorizationExceptionAlias
      */
-    public function destroy(Task $task)
+    public function destroy(Task $task): array
     {
         $this->authorize('delete', $task);
         $task->delete();

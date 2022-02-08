@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property mixed $project_id
+ */
 class FileRequest extends FormRequest
 {
     /**

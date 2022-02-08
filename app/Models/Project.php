@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * @method static where(string $string, int|string|null $id)
+ * @method static findOrFail(mixed $project_id)
+ */
 class Project extends Model
 {
     use HasFactory;
@@ -23,10 +27,10 @@ class Project extends Model
 
     public function getImagePathAttribute()
     {
-        if(is_null($this->image)) {
+        if (is_null($this->image)) {
             return null;
         }
 
-        return asset('storage/'.$this->image);
+        return asset('storage/' . $this->image);
     }
 }

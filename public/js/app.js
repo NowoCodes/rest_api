@@ -17373,7 +17373,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.showForm = false;
-      axios.get('api/projects').then(function (res) {
+      axios.get('api/blogs').then(function (res) {
         console.log(res);
         _this.projects = res.data.data;
       });
@@ -17617,7 +17617,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "min-h-10 bg-blue-800 flex justify-between items-center"
+  "class": "min-h-10 bg-blue-800 flex justify-between items-center py-2"
 };
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", {
@@ -18308,7 +18308,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
     "class": [{
-      'bg-gray-600': $props.task.priority == 'High'
+      'bg-gray-600': $props.task.priority === 'High'
     }, "mb-2 p-2 bg-gray-300 grid grid-cols-3"]
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.task.name), 1
   /* TEXT */

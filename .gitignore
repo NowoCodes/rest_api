@@ -11,11 +11,4 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-/.idea/.gitignore
-/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd
-/.idea/commandlinetools/Laravel_26_07_2021__23_19.xml
-/.idea/modules.xml
-/.idea/php.xml
-/.idea/phpunit.xml
-/.idea/rest_api.iml
-/.idea/vcs.xml
+.idea

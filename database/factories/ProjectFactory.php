@@ -23,8 +23,8 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => User::factory(),
+            'user_id' => 1,
             'name' => $this->faker->word(),
-        ];Project::factory()->count(10)->create();
+        ];
     }
 }

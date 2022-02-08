@@ -51,7 +51,7 @@ export default {
     methods: {
         fetchProjects() {
             this.showForm = false;
-            axios.get('api/blogs').then((res) => {
+            axios.get('api/projects').then((res) => {
                 console.log(res);
                 this.projects = res.data.data;
             });
